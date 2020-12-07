@@ -24,16 +24,23 @@ const team = []; // Array to keep all employees as info is collected
 // save html team page
 
 const askForTeamInfo = async () => {
+    // Ask what type of employee want to add to team
     return await inquirer.prompt(questions.role)
     .then(type => {
-        if (!(type.role === 'generate')) {
+        
+        if (!(type.role === 'generate')) { // if generate option selected then call render function
+            // if not then ask empplyee based questions
             askEmployeeInfo(type);
-        } else console.log(team);
+        } else {
+            console.log(team);
+            const html = render(team);
+            saveFile(html);
+        }
         
     });
-    // .then(team => console.log(team));
 }
 
+// Function to ask more questions based on employee type
 const askEmployeeInfo = async (type) => {
     return await inquirer.prompt(questions.employee)
     .then(employeeInfo => {
@@ -70,21 +77,7 @@ const askEmployeeInfo = async (type) => {
 // `output` folder. You can use the variable `outputPath` above target this location.
 // Hint: you may need to check if the `output` folder exists and create it if it
 // does not.
-const html = `
-<div class="card employee-card">
-    <div class="card-header">
-        <h2 class="card-title">{{ name }}</h2>
-        <h3 class="card-title"><i class="fas fa-mug-hot mr-2"></i>{{ role }}</h3>
-    </div>
-    <div class="card-body">
-        <ul class="list-group">
-            <li class="list-group-item">ID: {{ id }}</li>
-            <li class="list-group-item">Email: <a href="mailto:{{ email }}">{{ email }}</a></li>
-            <li class="list-group-item">Office number: {{ officeNumber }}</li>
-        </ul>
-    </div>
-</div>
-`
+
 const saveFile = (html) => {
     // Check if output directory exist and create if it is not.
     if (!fs.existsSync(OUTPUT_DIR)){

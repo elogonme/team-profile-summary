@@ -7,7 +7,6 @@ const path = require("path");
 const fs = require("fs");
 const questions = require ('./lib/questions');
 const chalk = require('chalk'); // chalk npm package to output colored text into console
-
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 

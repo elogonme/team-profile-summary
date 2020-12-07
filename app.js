@@ -1,3 +1,4 @@
+
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -12,27 +13,16 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 const team = []; // Array to keep all employees as info is collected
 
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
-
-// Ask what type of employee do you want to add or generate
-
-// Ask emplyee based questions
-
-// create emplyee based objects and push to employees array
-// render html team page
-// save html team page
-
 const askForTeamInfo = async () => {
     // Ask what type of employee want to add to team
     return await inquirer.prompt(questions.role)
     .then(type => {
         
-        if (!(type.role === 'generate')) { // if generate option selected then call render function
+        if (type.role !== 'generate') { // if generate option selected then call render function
             // if not then ask empplyee based questions
             askEmployeeInfo(type);
         } else {
-            console.log(team);
+            console.log('Generating Team Web page ...');
             const html = render(team);
             saveFile(html);
         }
@@ -83,7 +73,7 @@ const saveFile = (html) => {
     if (!fs.existsSync(OUTPUT_DIR)){
         fs.mkdirSync(OUTPUT_DIR);
     }
-    fs.writeFileSync(outputPath, html, (err) => 
+    fs.writeFile(outputPath, html, (err) => 
         err ? console.error(err) : console.log('Successfully saved team.html to output directory!')
     );
 }

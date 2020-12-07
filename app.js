@@ -4,13 +4,13 @@ const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
-const question = require ('./lib/questions')
+const questions = require ('./lib/questions')
 
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
-
+const team = []; // Array to keep all employees as info is collected
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
@@ -23,11 +23,42 @@ const render = require("./lib/htmlRenderer");
 // render html team page
 // save html team page
 
-askForTeamInfo(){
-    return inquirer.prompt[{
+const askForTeamInfo = async () => {
+    return await inquirer.prompt(questions.role)
+    .then(type => {
+        if (!(type.role === 'generate')) {
+            askEmployeeInfo(type);
+        } else console.log(team);
+        
+    });
+    // .then(team => console.log(team));
+}
 
-    }]
-    .then
+const askEmployeeInfo = async (type) => {
+    return await inquirer.prompt(questions.employee)
+    .then(employeeInfo => {
+        inquirer.prompt(questions[type.role])
+        .then(roleAnswer => {
+            let allAnswers = {...employeeInfo, ...roleAnswer};
+            console.log(allAnswers);
+            const { name, id, email, officeNumber, github, school} = allAnswers;
+            switch (type.role) {
+                case 'manager':
+                    team.push(new Manager(name, id, email, officeNumber));
+                    askForTeamInfo();
+                    break;
+                case 'engineer':
+                    team.push(new Engineer(name, id, email, github));
+                    askForTeamInfo();
+                    break;
+                case 'intern':
+                    team.push(new Intern(name, id, email, school));
+                    askForTeamInfo();
+                    break;
+            }
+            return allAnswers;
+        })
+    })
 }
 
 // After the user has input all employees desired, call the `render` function (required
@@ -63,9 +94,8 @@ const saveFile = (html) => {
         err ? console.error(err) : console.log('Successfully saved team.html to output directory!')
     );
 }
-console.log(OUTPUT_DIR);
-console.log(outputPath);
-saveFile(html);
+
+askForTeamInfo();
 // HINT: each employee type (manager, engineer, or intern) has slightly different
 // information; write your code to ask different questions via inquirer depending on
 // employee type.

@@ -1,11 +1,11 @@
 # Team Profile Summary generator.  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-  **Team Profile Summary Generator** - Node CLI application that takes in information about employees and generates an HTML webpage that displays summaries for each person in team.
+  **Team Profile Summary Generator** - Node CLI application which takes in information about employees and generates an HTML webpage that displays summaries for each person in team.
   
 ## Contents
 
 1. [Contents](#contents)
-2. [Screenshot](#screenshot)
+2. [Screenshot](#screenshots)
 3. [Installation](#installation)
 4. [Usage](#usage)
 5. [License](#license)
@@ -13,9 +13,9 @@
 7. [Testing](#testing)
 8. [Questions](#questions)
 
-### Screenshot
+### Screenshots
 ![Demo screenshot 1](img/demo.jpg)
-
+![Demo screenshot 2](img/demo1.jpg)
 ## Installation
 
 Download files from provided Repo URL. Run terminal and navigate to project folder. Make sure node is installed. Run `npm install` to install all dependencies before running app.  
@@ -23,7 +23,7 @@ Application can be accessed at [https://github.com/elogonme/team-profile-summary
 
 ## Usage
 
-To run application run `node index.js` in the terminal. The application will prompt the user for information about the team manager and then information about the team members. It will prompt the user for their email, id, and specific information based on their role with the company. The user can input any number of team members, and they may be a mix of engineers and interns. The application will create an HTML file that displays a nicely formatted team roster based on the information provided by the user. App will generate a `team.html` page in the `output` directory.  
+To run application run `node app.js` in the terminal. The application will prompt the user for information about the team manager and then information about the team members. It will prompt the user for their email, id, and specific information based on their role with the company. The user can input any number of team members, and they may be a mix of engineers and interns. The application will create an HTML file that displays a nicely formatted team roster based on the information provided by the user. App will generate a `team.html` page in the `output` directory. The video walkthrough about how to use application available [here]().
 All app code is available at repository [https://github.com/elogonme/team-profile-summary](https://github.com/elogonme/team-profile-summary)
 
 ## License

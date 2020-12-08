@@ -1,4 +1,4 @@
-# Team Profile Summary generator.  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# Team Profile Summary generator  <img src="https://img.shields.io/badge/node.js%20-%2343853D.svg?&style=for-the-badge&logo=node.js&logoColor=white"/> <img src="https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/>
 
   **Team Profile Summary Generator** - Node CLI application which takes in information about employees and generates an HTML webpage that displays summaries for each person in team.
   
@@ -23,7 +23,7 @@ Application can be accessed at [https://github.com/elogonme/team-profile-summary
 
 ## Usage
 
-To run application run `node app.js` in the terminal. The application will prompt the user for information about the team manager and then information about the team members. It will prompt the user for their email, id, and specific information based on their role with the company. The user can input any number of team members, and they may be a mix of engineers and interns. The application will create an HTML file that displays a nicely formatted team roster based on the information provided by the user. App will generate a `team.html` page in the `output` directory. The video walkthrough about how to use application available [here]().
+To run application run `node app.js` in the terminal. The application will prompt the user for information about the team manager and then information about the team members. It will prompt the user for their email, id, and specific information based on their role with the company. The user can input any number of team members, and they may be a mix of engineers and interns. The application will create an HTML file that displays a nicely formatted team roster based on the information provided by the user. App will generate a `team.html` page in the `output` directory. The **video walkthrough** about how to use application available [here](https://drive.google.com/file/d/1sdLu5skQwX0oiwbrPwILVGwPIkMCZxxS/view).
 All app code is available at repository [https://github.com/elogonme/team-profile-summary](https://github.com/elogonme/team-profile-summary)
 
 ## License
